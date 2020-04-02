@@ -34,7 +34,7 @@ use constant BUFSIZE =>  64 * 1024;	 # 64kB
 sub usage
 {
 	print "USAGE: $0 [OPTIONS] FILE1 FILE2\n";
-	print "Show a side-by-side binary comparison of FILE1 and FILE2. Show byte modifications but also additions and deletions, whatever the number of bytes changed. Rely on the 'diff' external command such as found on Linux or Cygwin. The algorithm is not suited for large and very different files.\n";	
+	print "Show a side-by-side binary comparison of FILE1 and FILE2. Show byte modifications but also additions and deletions, whatever the number of changed bytes. Rely on the 'diff' external command such as found on Linux or Cygwin. The algorithm is not suited for large and very different files.\n";	
 	print "Author: Jerome Lelasseux \@2021\n";
 	print "OPTIONS: \n";
 	print " --cols=N       : display N columns of bytes.diff Default is 16.\n";
@@ -120,8 +120,8 @@ while (<$fh>)
 		$isUnchangedLine=0;		
 		
 		/([a-fA-F0-9]+)/;
-		$oldByte=formatByte($1, 1);
-		$oldChar=toPrintableChar($1, 1);		
+		$oldByte=formatByte($1, 2);
+		$oldChar=toPrintableChar($1, 2);		
 		$newByte=formatByte(BLANK, 2);
 		$newChar=colorize(".", 2);		
 		$oldPtr++;
@@ -137,8 +137,8 @@ while (<$fh>)
 		$isUnchangedLine=0;		
 		
 		/([a-fA-F0-9]+)/;
-		$oldByte=formatByte(BLANK, 2);
-		$oldChar=colorize(".", 2);				
+		$oldByte=formatByte(BLANK, 1);
+		$oldChar=colorize(".", 1);				
 		$newByte=formatByte($1, 1);			
 		$newChar=toPrintableChar($1, 1);		
 		$newPtr++;		
