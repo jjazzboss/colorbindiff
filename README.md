@@ -1,6 +1,8 @@
 # colorbindiff
 A side-by-side visual and colorized diff for binary files. Show byte modifications but also additions and deletions, whatever the number of changed bytes. This is very convenient for example if you need to do reverse-engineering on a file format.
 
+![screen snapshot](screen-snapshot.png)
+
 ### Usage
 ```bash
 USAGE: perl colorbindiff [OPTIONS] FILE1 FILE2
