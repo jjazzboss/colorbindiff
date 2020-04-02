@@ -1,13 +1,17 @@
 # colorbindiff
-A side-by-side visual and colorized diff for binary files. Show byte modifications but also additions and deletions, whatever the number of changed bytes. This is very convenient for example if you need to do reverse-engineering on a file format.
+A side-by-side visual and colorized diff for binary files. 
+
+Show byte modifications but also additions and deletions, whatever the number of changed bytes. This is very convenient for example if you need to do reverse-engineering on a file format.
 
 ![screen snapshot](screen-snapshot.png)
 
-### Usage
+# Usage
 ```bash
-USAGE: perl colorbindiff [OPTIONS] FILE1 FILE2
+USAGE: perl colorbindiff.pl [OPTIONS] FILE1 FILE2
+
+EXAMPLE: perl colorbindiff.pl toto.exe titi.exe | more
 ```
-### Options
+# Options
 ```bash
 --cols=N       : display N columns of bytes.diff Default is 16.
 --no-color     : don't colorize output. Needed if you view the output in an editor.
@@ -15,9 +19,13 @@ USAGE: perl colorbindiff [OPTIONS] FILE1 FILE2
 --no-ascii     : don't show the ascii columns.
 --only-changes : only display lines with changes.
 ```
-The script relies on the standard `diff` external command as found on Linux or Cygwin, so it must be in your path -if not, you'll need to update the script where `diff` is called.
 
 Note that the algorithm is not suited for large and very different files.
+
+# Installation
+Linux: nothing to install, just download and run the script.
+
+Windows: install cygwin with default options. This will get you `perl` and `diff` installed. Then download and run the script.
 
 # License
 LGPL v3
