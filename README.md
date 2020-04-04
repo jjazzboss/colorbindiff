@@ -19,6 +19,7 @@ EXAMPLE: perl colorbindiff.pl toto.exe titi.exe | more
 |--no-marker | don't use the change markers ('\+' for addition, '\-' for deletion, '\*' for modified).
 |--no-ascii  | don't show the ascii columns.
 |--only-changes | only display lines with changes.
+|--no-header | don't print the header line.
 
 # Installation
 Linux: nothing to install, just download and run the script.
