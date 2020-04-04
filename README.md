@@ -9,7 +9,7 @@ Show on the standard output byte modifications but also additions and deletions,
 ```bash
 USAGE: perl colorbindiff.pl [OPTIONS] FILE1 FILE2
 
-EXAMPLE: perl colorbindiff.pl toto.exe titi.exe | more
+EXAMPLE: perl colorbindiff.pl toto.exe titi.exe | less
 ```
 
 | Option | Description 
@@ -20,6 +20,8 @@ EXAMPLE: perl colorbindiff.pl toto.exe titi.exe | more
 |--no-ascii  | don't show the ascii columns.
 |--only-changes | only display lines with changes.
 |--no-header | don't print the header line.
+
+At least on cygwin prefer the `less` command rather than `more`, `more` has sometimes problems handling the script output.
 
 # Installation
 Linux: nothing to install, just download and run the script.
