@@ -42,6 +42,7 @@ sub usage
 	print " --no-marker    : don't use the change markers (+ for addition, - for deletion, * for modified).\n";
 	print " --no-ascii     : don't show the ascii columns.\n";
 	print " --only-changes : only display lines with changes.\n";
+	print " --no-header    : don't print the header line.\n";
 	exit;
 }
 
@@ -51,12 +52,14 @@ my $noColor=0;
 my $noMarker=0;
 my $noAscii=0;
 my $noCommon=0;
+my $noHeader=0;
 GetOptions(
 	'cols=i' => \$maxCols,
 	'no-ascii' => \$noAscii,
     'no-color' => \$noColor,
     'no-marker' => \$noMarker,
-	'only-changes' => \$noCommon	
+	'only-changes' => \$noCommon,
+	'no-header' => \$noHeader
 ) or usage();
 usage() unless ($#ARGV == 1);
 my ($file1, $file2) = (@ARGV);
@@ -66,6 +69,18 @@ my ($file1, $file2) = (@ARGV);
 my $fileHex1 = createHexListFile($file1);
 my $fileHex2 = createHexListFile($file2);
 
+# Print a header line
+if (! $noHeader)
+{
+	my $asciiSpace = $noAscii ? "" : " " x $maxCols;	
+	my $s = $noMarker ? " " : "  ";
+	my $header="OFFSET ${s}00${s}01${s}02${s}03${s}04${s}05${s}06${s}07${s}08${s}09${s}0A${s}0B${s}0C${s}0D${s}0E${s}0F $asciiSpace  OFFSET ${s}00${s}01${s}02${s}03${s}04${s}05${s}06${s}07${s}08${s}09${s}0A${s}0B${s}0C${s}0D${s}0E${s}0F\n";
+	if (!$noColor)
+	{
+		$header = colored($header, 'magenta');
+	}
+	print $header;
+}
 
 # Process diff -y output to get an easy-to-read side-by-side view
 my $colIndex=0;
@@ -232,10 +247,10 @@ sub printLine
 	{
 		# Colorize and add a marker to the address of each line if some bytes are changed/added/deleted 
 		my $prefix = substr($oldLineBuffer, 0, 6) . ($noMarker ? " " : "*");
-		$prefix = colored($prefix, 'magenta') unless $noColor;
+		$prefix = colored($prefix, 'bright_magenta') unless $noColor;
 		$oldLineBuffer =~ s/^......./$prefix/;
 		$prefix = substr($newLineBuffer, 0, 6) . ($noMarker ? " " : "*");
-		$prefix = colored($prefix, 'magenta') unless $noColor;
+		$prefix = colored($prefix, 'bright_magenta') unless $noColor;
 		$newLineBuffer =~ s/^......./$prefix/;		
 	}
 	
