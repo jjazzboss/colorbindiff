@@ -9,7 +9,7 @@ Show on the standard output byte modifications but also additions and deletions,
 ```bash
 USAGE: perl colorbindiff.pl [OPTIONS] FILE1 FILE2
 
-EXAMPLE: perl colorbindiff.pl toto.exe titi.exe | less
+EXAMPLE: perl colorbindiff.pl file1.dat file2.dat | less
 ```
 
 | Option | Description 
