@@ -1,7 +1,7 @@
 # colorbindiff
 A side-by-side visual and colorized diff for binary files. 
 
-Show on the standard output byte modifications but also additions and deletions, whatever the number of changed bytes. This is very convenient for example if you need to do reverse-engineering on a file format. Note that the algorithm is not suited for large and very different files. The `diff` external command must be in present in the path.
+Show on the standard output byte modifications but also additions and deletions, whatever the number of changed bytes. This is very convenient for example if you need to do reverse-engineering on a file format. Note that the algorithm is not suited for large and very different files. The `diff` external command must be present in the path.
 
 ![screen snapshot](screen-snapshot.png)
 
