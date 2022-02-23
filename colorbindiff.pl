@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 #########################################################################
 #
-# VBINDIFF.PL : A side-by-side visual diff for binary files.
-#               Consult usage subroutine below for help.
+# COLORBINDIFF.PL : A side-by-side visual diff for binary files.
+#                   Consult usage subroutine below for help.
 #
 # Copyright (C) 2021 Jerome Lelasseux jl@jjazzlab.com
 #
@@ -19,7 +19,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 #
 #########################################################################
 
